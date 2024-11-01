@@ -1,0 +1,24 @@
+{
+    "buildings": [
+        {
+            "name": "Sales department",
+            "routers": [
+                {
+                    "devices": [
+                        {
+                            "name": "Phone 1",
+                            "type": 1,
+                            "virus": true,
+                            "securityLevel": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "virus": {
+        "name": "Trojan",
+        "sentByMail": false,
+        "networkPropagation": true
+    }
+}
