@@ -10,15 +10,49 @@
                             "type": 1,
                             "virus": true,
                             "securityLevel": 1
+                        },
+                        {
+                            "name": "Computer 1",
+                            "type": 1,
+                            "virus": true,
+                            "securityLevel": 1
                         }
-                    ]
+                    ],
+                    "firewall": true,
+                    "virus": false
+                },
+                {
+                    "devices": [
+                        {
+                            "name": "Computer 2",
+                            "type": 1,
+                            "virus": true,
+                            "securityLevel": 1
+                        },
+                        {
+                            "name": "Computer 3",
+                            "type": 1,
+                            "virus": true,
+                            "securityLevel": 1
+                        },
+                        {
+                            "name": "Computer 4",
+                            "type": 1,
+                            "virus": true,
+                            "securityLevel": 1
+                        }
+                    ],
+                    "firewall": true,
+                    "virus": false
                 }
-            ]
+            ],
+            "isCompany": false
         }
     ],
     "virus": {
         "name": "Trojan",
         "sentByMail": false,
         "networkPropagation": true
-    }
+    },
+    "steps": 100000
 }
