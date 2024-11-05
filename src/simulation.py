@@ -113,3 +113,5 @@ def StartSimulation(buildings, steps):
     print(f"Final infected devices: {stats.CalcInfectedDevices(buildings)}")
     print("-----------------")
     print(f"Most infected building: {stats.CalcMostInfectedBuilding(buildings)}")
+    print("-----------------")
+    print(f"Most infected device type: {stats.CalcMostInfectedDeviceType(buildings)}")
