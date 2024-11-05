@@ -12,7 +12,7 @@ class Device:
     def randomAction(self):
         pass
 
-    def setVirus(self, virus):
+    def setVirus(self, virus, init=True):
         self.virus = virus
         print(f'Device "{self.name}" infected!')
 

@@ -5,9 +5,8 @@ from classes.device.device import Device
 from classes.device.computer import Computer
 from classes.device.phone import Phone
 from classes.device.iot import IoT
-from time import sleep
 import stats
-
+import time
 
 # This function reads the json input and initializes the simulation with it's initial values
 def InitSimulation(data):
@@ -88,6 +87,7 @@ def InitSimulation(data):
 def StartSimulation(buildings, steps):
     maxInfected = 0
     maxInfectedTime = 0
+    startTime = time.time()
     for i in range(0, steps):
         for building in buildings:
             for router in building.routers:
@@ -98,20 +98,33 @@ def StartSimulation(buildings, steps):
         if currentInfected > maxInfected:
             maxInfected = currentInfected
             maxInfectedTime = i
-        print("Step:", i)
+        print("############################")
+        print("STEP:", i)
+        print("############################")
 
     totalDevices = stats.CalcTotalDevices(buildings)
+    
+    endTime = time.time()
 
-    print("-----------------")
-    print("-----------------")
-    print("Simulation statistics:")
-    print("-----------------")
-    print(f"Peak infected devices: {maxInfected}/{totalDevices}")
-    print("-----------------")
-    print(f"Steps to reach peak infection: {maxInfectedTime}/{steps}")
-    print("-----------------")
-    print(f"Final infected devices: {stats.CalcInfectedDevices(buildings)}")
-    print("-----------------")
-    print(f"Most infected building: {stats.CalcMostInfectedBuilding(buildings)}")
-    print("-----------------")
-    print(f"Most infected device type: {stats.CalcMostInfectedDeviceType(buildings)}")
+    totalStats = f"""
+    #########################
+    #########################
+    Simulation statistics:
+    -------------------------
+    Peak infected devices: {maxInfected}/{totalDevices}
+    -------------------------
+    Steps to reach peak infection: {maxInfectedTime}/{steps}
+    -------------------------
+    Final infected devices: {stats.CalcInfectedDevices(buildings)}
+    -------------------------
+    Most infected building: {stats.CalcMostInfectedBuilding(buildings)}
+    -------------------------
+    Most infected device type: {stats.CalcMostInfectedDeviceType(buildings)}
+    -------------------------
+    Simulation total time: {int(endTime-startTime)} seconds
+    ########################
+    ########################
+    """
+    
+    f = open("stats.txt","w")
+    f.write(totalStats)

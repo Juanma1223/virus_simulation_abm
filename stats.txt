@@ -1,0 +1,19 @@
+
+    #########################
+    #########################
+    Simulation statistics:
+    -------------------------
+    Peak infected devices: 836/1000
+    -------------------------
+    Steps to reach peak infection: 7403/10000
+    -------------------------
+    Final infected devices: 803
+    -------------------------
+    Most infected building: Building 8
+    -------------------------
+    Most infected device type: IoT
+    -------------------------
+    Simulation total time: 44 seconds
+    ########################
+    ########################
+    

@@ -4,11 +4,13 @@ import random
 
 # Device type 1
 class Computer(Device):
+
     def __init__(self, id, name, virus, neighbors, gateway, securityLevel):
         super().__init__(id, name, virus, neighbors, gateway, securityLevel)
         # This instance parameter defines a random parameter to emulate user's cautiousness
         # If infectionProbability is high then the user is not a cautious one and is more prone to be infected
         self.infectionProbability = random.randrange(1, 100)
+        self.detectionProbability = 5
 
     def setVirus(self, virus, init=False):
         # If init is true, we are initializing this device as infected and no probability should be calculated
@@ -19,8 +21,8 @@ class Computer(Device):
             return super().setVirus(virus)
 
     def randomAction(self):
-        randAction = random.randrange(0,2)
-        if(randAction == 0):
+        randAction = random.randrange(0, 2)
+        if randAction == 0:
             self.sendEmail()
         else:
             self.detectVirus()
@@ -40,7 +42,6 @@ class Computer(Device):
 
     def detectVirus(self):
         # Virus detection probability is inversely proportional to infectionProbability
-        detectionProbability = 100 - self.infectionProbability
-        if random.randrange(0, 100) > detectionProbability:
+        if random.randrange(0, 100) < self.detectionProbability:
             self.virus = None
             print(f"Computer {self.id} detected the virus and deleted it!")

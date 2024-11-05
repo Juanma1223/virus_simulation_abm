@@ -31,6 +31,7 @@ Virus-Spreading-Simulation/
     ├── main.py               # Main script to run the simulation
     ├── simulation.py         # Simulation logic and control
     └── stats.py              # Statistical analysis and reporting
+    └── inputGenerator.py     # Generate input json using simulation parameters
 ```
 
 ## Getting Started
@@ -163,17 +164,14 @@ The `input.json` file should follow this structure:
 }
 ```
 
+### Generate an arbitrary large input.json
+
+Go to src/inputGenerator.py and modify the parameters to your liking, then, run "generateInput.sh" to create a custom input.json with as many device, buildings and routers as you want
+
 ### Output
 
 The simulation generates logs and statistical data in logs.txt and stats.txt
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contribution
-
-Feel free to fork the project and submit pull requests. Contributions are welcome!
 
 ## Author
 
