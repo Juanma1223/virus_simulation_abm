@@ -19,7 +19,11 @@ class Computer(Device):
             return super().setVirus(virus)
 
     def randomAction(self):
-        self.sendEmail()
+        randAction = random.randrange(0,2)
+        if(randAction == 0):
+            self.sendEmail()
+        else:
+            self.detectVirus()
 
     def sendEmail(self):
         if self.virus:
@@ -33,3 +37,10 @@ class Computer(Device):
                     sendVirusProbability = random.randrange(0, 100)
                     if sendVirusProbability > 50:
                         self.gateway.routePackage(self.virus)
+
+    def detectVirus(self):
+        # Virus detection probability is inversely proportional to infectionProbability
+        detectionProbability = 100 - self.infectionProbability
+        if random.randrange(0, 100) > detectionProbability:
+            self.virus = None
+            print(f"Computer {self.id} detected the virus and deleted it!")
