@@ -1,6 +1,4 @@
 class Device:
-    
-    
     def __init__(self, id, name, virus, neighbors, gateway, securityLevel):
         self.id = id
         self.name = name
@@ -13,6 +11,10 @@ class Device:
     # This should be implemented independently for each device
     def randomAction(self):
         pass
-    
-    def setVirus(self,virus):
+
+    def setVirus(self, virus):
         self.virus = virus
+        print(f'Device "{self.name}" infected!')
+
+    def cleanVirus(self):
+        self.virus = None
