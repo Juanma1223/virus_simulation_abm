@@ -7,7 +7,7 @@ def CalcInfectedDevices(buildings):
     totalInfected = 0
     for building in buildings:
         for router in building.routers:
-            if router.devices != None:
+            if router.devices != None and router.nexus == False:
                 for device in router.devices:
                     if device.virus != None:
                         totalInfected += 1
@@ -20,7 +20,7 @@ def CalcMostInfectedBuilding(buildings):
     for building in buildings:
         currentInfected = 0
         for router in building.routers:
-            if router.devices != None:
+            if router.devices != None and router.nexus == False:
                 for device in router.devices:
                     if device.virus != None:
                         currentInfected += 1
@@ -34,7 +34,7 @@ def CalcTotalDevices(buildings):
     totalDevices = 0
     for building in buildings:
         for router in building.routers:
-            if router.devices != None:
+            if router.devices != None and router.nexus == False:
                 for device in router.devices:
                     totalDevices += 1
     return totalDevices
@@ -45,7 +45,7 @@ def CalcMostInfectedDeviceType(buildings):
     deviceTypesInfections = [0, 0, 0]
     for building in buildings:
         for router in building.routers:
-            if router.devices != None:
+            if router.devices != None and router.nexus == False:
                 for device in router.devices:
                     if device.virus != None:
                         if type(device) is Computer:

@@ -2,11 +2,11 @@ import json
 import random
 
 # Amount of simulated buildings
-buildingCount = 10
+buildingCount = 3
 # Amount of routers inside each building
-routersPerBuilding = 5
+routersPerBuilding = 1
 # Amount of devices on each network
-devicesPerRouter = 20
+devicesPerRouter = 15
 
 data = {
     "buildings": [],
@@ -32,7 +32,8 @@ for b in range(buildingCount):
     for r in range(routersPerBuilding):
         router = {
             "devices": [],
-            "firewall": random.choice([True, False]),
+            # "firewall": random.choice([True, False]),
+            "firewall": False,
             "virus": False,
         }
         for d in range(devicesPerRouter):
@@ -40,7 +41,8 @@ for b in range(buildingCount):
             device = {
                 "name": f"{device_type} {d+1}",
                 "type": type_mapping[device_type],
-                "virus": random.choice([True, False]),
+                # "virus": random.choice([True, False]),
+                "virus": False,
                 "securityLevel": random.randint(1, 5),
             }
             router["devices"].append(device)

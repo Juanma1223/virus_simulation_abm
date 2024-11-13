@@ -35,13 +35,14 @@ class Computer(Device):
                 if self.virus.selfReplicating:
                     self.gateway.routePackage(self.virus)
                 else:
-                    # If not, there is a change the user is sending an infected file
+                    # If not, there is a chance the user is sending an infected file
                     sendVirusProbability = random.randrange(0, 100)
                     if sendVirusProbability > 50:
                         self.gateway.routePackage(self.virus)
 
     def detectVirus(self):
         # Virus detection probability is inversely proportional to infectionProbability
-        if random.randrange(0, 100) < self.detectionProbability:
+        prob = random.randrange(0, 100)
+        if prob < self.detectionProbability:
             self.virus = None
             print(f"Computer {self.id} detected the virus and deleted it!")

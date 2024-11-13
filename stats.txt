@@ -3,13 +3,13 @@
     #########################
     Simulation statistics:
     -------------------------
-    Peak infected devices: 836/1000
+    Peak infected devices: 567/585
     -------------------------
-    Steps to reach peak infection: 7403/10000
+    Steps to reach peak infection: 1453/10000
     -------------------------
-    Final infected devices: 803
+    Final infected devices: 544
     -------------------------
-    Most infected building: Building 8
+    Most infected building: Building 18
     -------------------------
     Most infected device type: IoT
     -------------------------

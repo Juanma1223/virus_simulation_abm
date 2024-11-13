@@ -8,6 +8,7 @@ from classes.device.iot import IoT
 import stats
 import time
 
+
 # This function reads the json input and initializes the simulation with it's initial values
 def InitSimulation(data):
     routersCurrentId = 0
@@ -26,7 +27,7 @@ def InitSimulation(data):
         for currentRouter in building["routers"]:
             routerDevices = []
             newRouter = Router(
-                routersCurrentId, None, None, None, currentRouter["firewall"]
+                routersCurrentId, None, None, None, currentRouter["firewall"], False
             )
             for currentDevice in currentRouter["devices"]:
                 newDevice = None
@@ -77,7 +78,10 @@ def InitSimulation(data):
         buildingsCurrentId += 1
     # Connect buildings using an extra router between them
     for i in range(0, len(buildings) - 1):
-        newRouter = Router(routersCurrentId, None, None, None, False)
+        combinedRouters = (
+            buildings[i].getRouters().extend(buildings[i + 1].getRouters())
+        )
+        newRouter = Router(routersCurrentId, None, combinedRouters, None, False, True)
         buildings[i].addRouter(newRouter)
         buildings[i + 1].addRouter(newRouter)
         routersCurrentId += 1
@@ -103,7 +107,7 @@ def StartSimulation(buildings, steps):
         print("############################")
 
     totalDevices = stats.CalcTotalDevices(buildings)
-    
+
     endTime = time.time()
 
     totalStats = f"""
@@ -125,6 +129,6 @@ def StartSimulation(buildings, steps):
     ########################
     ########################
     """
-    
-    f = open("stats.txt","w")
+
+    f = open("stats.txt", "w")
     f.write(totalStats)
